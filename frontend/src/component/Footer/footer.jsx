@@ -1,6 +1,22 @@
 
 export default Footer => {
-    return (<div>
-       footer part
-    </div>);
+    return (
+      <footer
+        style={{
+          position: "fixed",
+          bottom:0,
+          left: 0,
+          width: "100%",
+          backgroundColor: "#f8f9fa", // Optional: Set background color
+          textAlign: "center",
+          padding: "20px 0",
+        }}
+      >
+        <div className="container">
+          <div className="row">
+            <div className="col">Copyright &copy; Memento</div>
+          </div>
+        </div>
+      </footer>
+    );
 }

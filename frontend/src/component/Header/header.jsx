@@ -1,11 +1,13 @@
+import Dropdown from "react-bootstrap/Dropdown";
+import DropdownButton from "react-bootstrap/DropdownButton";
 
-export default Header => {
+export default (Header) => {
   return (
     <>
-      <nav class="navbar navbar-expand-lg navbar-light bg-primary navbar-variant-dark">
+      <nav class="navbar navbar-expand-lg bg-primary navbar-dark ">
         <div class="container">
-          <a class="navbar-brand" href="#">
-            Navbar
+          <a class="navbar-brand" href="/">
+            Memento
           </a>
           <button
             class="navbar-toggler"
@@ -20,56 +22,35 @@ export default Header => {
           </button>
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-              <li class="nav-item active">
-                <a class="nav-link" href="#">
-                  Home <span class="sr-only">(current)</span>
-                </a>
-              </li>
+            <nav className="m-auto">
+              <form class="form-inline my-2 my-lg-0">
+                <input
+                  class="form-control mr-sm-2"
+                  type="search"
+                  placeholder="Search"
+                  aria-label="Search"
+                />
+              </form>
+            </nav>
+            <ul class="navbar-nav">
               <li class="nav-item">
                 <a class="nav-link" href="#">
-                  Link
+                  My Notes
                 </a>
               </li>
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  id="navbarDropdown"
-                  role="button"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  Dropdown
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="#">
-                    Action
-                  </a>
-                  <a class="dropdown-item" href="#">
-                    Another action
-                  </a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">
-                    Something else here
-                  </a>
-                </div>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link disabled" href="#">
-                  Disabled
-                </a>
-              </li>
+              <Dropdown>
+                <Dropdown.Toggle variant="success" id="dropdown-basic">
+                  Ashish Aryawarti
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu>
+                  <Dropdown.Item href="#/action-1">My Profile</Dropdown.Item>
+                  <Dropdown.Item href="#/action-2">
+                    Logout
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-              <input
-                class="form-control mr-sm-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-            </form>
           </div>
         </div>
       </nav>
