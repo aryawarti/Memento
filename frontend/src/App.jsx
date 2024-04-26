@@ -1,10 +1,10 @@
+import Footer from "./component/Footer/footer"
+import Header from "./component/Header/header"
 
 function App() {
   return (
-    <>
-      <div>Ashish Kumar Yadav</div>
-    </>
-  )
+       <Header/>
+  );
 }
 
 export default App
