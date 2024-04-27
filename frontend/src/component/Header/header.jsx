@@ -4,7 +4,7 @@ import DropdownButton from "react-bootstrap/DropdownButton";
 export default (Header) => {
   return (
     <>
-      <nav class="navbar navbar-expand-lg bg-primary navbar-dark ">
+      <nav class="navbar navbar-expand-xl bg-primary navbar-dark p-3 ">
         <div class="container">
           <a class="navbar-brand" href="/">
             Memento
@@ -25,7 +25,7 @@ export default (Header) => {
             <nav className="m-auto">
               <form class="form-inline my-2 my-lg-0">
                 <input
-                  class="form-control mr-sm-2"
+                  class="form-control mr-sm-2 pl-5"
                   type="search"
                   placeholder="Search"
                   aria-label="Search"
@@ -34,7 +34,7 @@ export default (Header) => {
             </nav>
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link fs-27" href="#">
                   My Notes
                 </a>
               </li>
@@ -45,9 +45,7 @@ export default (Header) => {
 
                 <Dropdown.Menu>
                   <Dropdown.Item href="#/action-1">My Profile</Dropdown.Item>
-                  <Dropdown.Item href="#/action-2">
-                    Logout
-                  </Dropdown.Item>
+                  <Dropdown.Item href="#/action-2">Logout</Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
             </ul>
