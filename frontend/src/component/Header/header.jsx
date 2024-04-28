@@ -1,13 +1,13 @@
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
-
+import { Outlet,NavLink } from "react-router-dom";
 export default (Header) => {
   return (
     <>
       <nav class="navbar navbar-expand-xl bg-primary navbar-dark p-3 ">
         <div class="container">
           <a class="navbar-brand" href="/">
-            Memento
+            <NavLink to="/">Memento</NavLink>
           </a>
           <button
             class="navbar-toggler"
@@ -35,7 +35,7 @@ export default (Header) => {
             <ul class="navbar-nav">
               <li class="nav-item">
                 <a class="nav-link fs-27" href="#">
-                  My Notes
+                  <NavLink to="/mynotes">My Notes</NavLink>
                 </a>
               </li>
               <Dropdown>
@@ -52,6 +52,9 @@ export default (Header) => {
           </div>
         </div>
       </nav>
+      <main className="m-20">
+        <Outlet />
+      </main>
     </>
   );
 };
