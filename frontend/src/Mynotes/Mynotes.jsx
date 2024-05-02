@@ -1,15 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import MainScreen from "../component/mainScreen";
 import { NavLink } from "react-router-dom";
 import { Badge, Button } from "react-bootstrap";
 import notes from "../notes.js";
+import axios from "axios";
 
 const Mynotes = () => {
+  const [notes,setNotes]= useState([]);
   const deleteHandler=(id)=>{
       if(window.confirm("Are you sure?")){
            
       }
   }
+  const NoteFetch= async ()=>{
+     const {data}=await axios.get("http://localhost:5000/api/notes");
+      setNotes(pre=>data);
+  }
+
+  useEffect(()=>{
+    NoteFetch();
+  },[]);
+  
   return (
     <MainScreen title="Welcome Back Ashish      Kumar Yadav">
       <NavLink to="createnote">

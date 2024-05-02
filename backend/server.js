@@ -1,8 +1,11 @@
 const notes=require('./data/notes');
 const express = require("express");
 const dotenv= require('dotenv');
-
 const app=express();
+var cors = require("cors");
+
+app.use(cors());
+
 dotenv.config();
 
 app.get("/",(req,res)=>{
@@ -18,7 +21,7 @@ app.get('/api/notes/:id',(req,res)=>{
     res.send(note);
 });
 
-const PORT = process.env.PORT|| 4000;
+const PORT = process.env.PORT|| 3000;
 console.log(PORT);
 app.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);
