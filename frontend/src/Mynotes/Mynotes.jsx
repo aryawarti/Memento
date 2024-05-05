@@ -28,6 +28,7 @@ const Mynotes = () => {
           Create New Note
         </Button>
       </NavLink>
+
       {notes.map((note) => {
         return (
           <div class="accordion">

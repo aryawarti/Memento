@@ -1,8 +1,8 @@
-import { NavLink } from "react-router-dom"
+import { NavLink } from "react-router-dom";
 import { Button } from "react-bootstrap";
-import './landingPage.css'
+import "./landingPage.css";
 
-export default LandingPage =>{
+export default (LandingPage) => {
   return (
     <div className="main">
       <div className="container">
@@ -13,17 +13,20 @@ export default LandingPage =>{
               <p className="subtitle">One Safe place for all your notes.</p>
             </div>
             <div className="buttonContainer">
-             
-              <Button variant="primary" size="lg" className="landingbutton">
-                Login
-              </Button>
-              <Button
-                variant="outline-primary"
-                size="lg"
-                className="landingbutton"
-              >
-                Signup
-              </Button>
+                <NavLink to="/login">
+                    <Button variant="primary" size="lg" className="landingbutton">
+                      Login
+                    </Button>
+                </NavLink>
+                <NavLink to="/register">
+                    <Button
+                      variant="outline-primary"
+                      size="lg"
+                      className="landingbutton"
+                    >
+                      Signup
+                    </Button>
+                </NavLink>
             </div>
           </div>
         </div>
