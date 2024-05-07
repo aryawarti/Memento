@@ -1,9 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@200&display=swap");
 
 .mainback {
-  min-height: 93vh;
+  min-height: 85vh;
   display: flex;
   padding: 10px 0;
+  color:white
 }
 .page {
   width: 100%;

@@ -1,8 +1,18 @@
 import { NavLink } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import "./landingPage.css";
+import { useEffect } from "react";
+// import {useHistory} from "react-router-dom";
 
 export default (LandingPage) => {
+  //  const history = useHistory();
+  // useEffect(()=>{
+  //     const userInfo= localStorage.getItem("userInfo");
+  //      if(userInfo) {
+  //          history.push("/mynotes");
+  //      }
+  // },[]);
+
   return (
     <div className="main">
       <div className="container">

@@ -9,7 +9,6 @@ export default Footer => {
           width: "100%",
           backgroundColor: "#f8f9fa", // Optional: Set background color
           textAlign: "center",
-          padding: "20px 0",
         }}
       >
         <div className="container">

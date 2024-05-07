@@ -1,5 +1,20 @@
 .loginContainer{
    display: flex;
    flex-direction: column;
-   margin: 20px;
+   align-items: center;
+   box-shadow:  0 0 20px rgb(0, 0, 0);
+   width: 380px;
+   margin-left: 375px;
+   padding-bottom: 80px;
+    gap: 6.5px;
+   background-color:rgb(255, 255, 255);
+   border-radius: 5px;
+}
+.loginForm{
+   padding-top: 25px;
+   display: flex;
+   flex-direction: column;
+   width: 330px;
+   gap: 5px;
+   color:black;
 }
