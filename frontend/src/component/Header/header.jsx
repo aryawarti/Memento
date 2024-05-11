@@ -1,6 +1,11 @@
+import { Nav } from "react-bootstrap";
+// import { useHistory } from "react-router-dom";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
-import { Outlet,NavLink } from "react-router-dom";
+
+import { Outlet,NavLink} from "react-router-dom";
+
+
 export default (Header) => {
   return (
     <>
@@ -45,7 +50,11 @@ export default (Header) => {
 
                 <Dropdown.Menu>
                   <Dropdown.Item href="#/action-1">My Profile</Dropdown.Item>
-                  <Dropdown.Item href="#/action-2">Logout</Dropdown.Item>
+                  <Dropdown.Item onClick={ (e)=>{
+                        localStorage.removeItem("userInfo");
+                       
+                  }
+                  }><NavLink to="/">Logoutz</NavLink></Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
             </ul>

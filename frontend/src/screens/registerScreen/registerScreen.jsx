@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import './registrationScreen.css'
 import ErrorMessage from '../../component/ErrorMessage';
-
+import axios from 'axios';
+import Loading from '../../component/Loading';
 
 function RegisterScreen() {
  
-  const [email,setEmail]= useState("ashish");
+  const [email,setEmail]= useState("");
   const [name, setName]= useState("");
   const [pic, setPic] = useState(
     "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg"
@@ -17,15 +18,68 @@ function RegisterScreen() {
   const [error,setError]= useState(false);
   const [loading,setLoading]= useState(false);
 
-  const submitHandler=(e)=>{
+  const submitHandler= async(e)=>{
       e.preventDefault();
       
       if(password!==confirmpassword){
           setMessage("Password Do not Match");
       }else{
         setMessage(null);
+
+        try{
+           const config={
+              headers: {
+                 "Content-type": "application/json",
+              },
+           };
+           
+           setLoading(true);
+
+           const { data } = await axios.post(
+             "http://localhost:5000/api/users",
+             { name, email, password, pic },
+             config
+           );
+           console.log(data);
+           setLoading(false);
+           localStorage.setItem("userInfo", JSON.stringify(data));
+        }
+        catch(error){
+            setError(error.response.data.message);
+            setLoading(false);
+        }
       }
   };
+
+    const postDetails = (pics) => {
+      if (
+        pics ===
+        "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg"
+      ) {
+        return setPicMessage("Please Select an Image");
+      }
+      setPicMessage(null);
+      if (pics.type === "image/jpeg" || pics.type === "image/png") {
+        const data = new FormData();
+        data.append("file", pics);
+        data.append("upload_preset", "memento1");
+        data.append("cloud_name", "dipwgfjvi");
+        fetch("https://api.cloudinary.com/v1_1/dipwgfjvi/image/upload", {
+          method: "post",
+          body: data,
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            setPic(data.url.toString());
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      } else {
+        return setPicMessage("Please Select an Image");
+      }
+    };
 
   return (
     <section class="vh-40 bg-image">
@@ -47,9 +101,14 @@ function RegisterScreen() {
                   </h2>
 
                   <form onSubmit={submitHandler}>
+
+                  {/* errors showing */}
+                    {error && <ErrorMessage variant='danger'>{error}</ErrorMessage>}
                     {message && (
                       <ErrorMessage variant="danger">{message}</ErrorMessage>
                     )}
+                    {loading && <Loading/>}
+
                     <div data-mdb-input-init class="form-outline mb-2">
                       <input
                         type="text"
@@ -97,9 +156,13 @@ function RegisterScreen() {
                       />
                       <label class="form-label" for="form3Example4cdg"></label>
                     </div>
+
+                    { picMessage && <ErrorMessage variant='danger'>{picMessage}</ErrorMessage>}
+
                     <div class="form-group">
                       <label for="fileInput"></label>
                       <input
+                        onChange={(e)=>postDetails(e.target.files[0])}
                         type="file"
                         class="form-control-file"
                         id="fileInput"
