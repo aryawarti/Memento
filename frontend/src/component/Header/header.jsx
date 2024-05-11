@@ -52,9 +52,8 @@ export default (Header) => {
                   <Dropdown.Item href="#/action-1">My Profile</Dropdown.Item>
                   <Dropdown.Item onClick={ (e)=>{
                         localStorage.removeItem("userInfo");
-                       
                   }
-                  }><NavLink to="/">Logoutz</NavLink></Dropdown.Item>
+                  }><NavLink to="/">Logout</NavLink></Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
             </ul>
