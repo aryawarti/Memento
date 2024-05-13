@@ -1,45 +1,25 @@
 import React, { useState } from "react";
 import MainScreen from "../../component/mainScreen";
 import { NavLink } from "react-router-dom";
-import './loginScreen.css';
+import "./loginScreen.css";
 import axios from "axios";
 import Loading from "../../component/Loading";
 import ErrorMessage from "../../component/ErrorMessage";
+import { useSelector, useDispatch } from "react-redux";
+import { FormSubmit } from "../../actions/formSubmit";
 
 function LoginScreen() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(false);
 
- const submitHandler = async (e) => {
-   e.preventDefault();
-   
-   try {
-      const config={
-        headers:{
-          "Content-type": "application/json",
-        },
-      };
-    
-      setLoading(true);
-     const { data } = await axios.post(
-       "http://localhost:5000/api/users/login",
-       {
-         email,
-         password,
-       },
-       config
-     );
+  const { error, loading, userInfo } = useSelector((state) => state.userLogin);
+  const dispatch = useDispatch();
 
-     localStorage.setItem("userInfo",JSON.stringify(data));
-     setLoading(false);
-    
-   } catch (error) {
-      setError(error.response.data.message);
-      setLoading(false);
-   }
- };
+  const submitHandler = async (e) => {
+    e.preventDefault();
+
+    dispatch(FormSubmit({ email, password }));
+  };
 
   return (
     <div

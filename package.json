@@ -4,6 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
+    "frontend": "BROWSER= npm start",
     "start": "node backend/server",
     "server": "nodemon backend/server",
     "client": "cd frontend && npm run dev",
