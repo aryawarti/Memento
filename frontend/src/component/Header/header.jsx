@@ -1,11 +1,18 @@
 import { Nav } from "react-bootstrap";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
-
+import { logout } from "../../actions/userLogOut";
+import { useSelector, useDispatch } from "react-redux";
 import { Outlet,NavLink} from "react-router-dom";
 
 
 export default (Header) => {
+   const dispatch= useDispatch();
+  
+   const logoutHandler= ()=>{
+      dispatch(logout());
+      window.location.href = "/";
+   }
   return (
     <>
       <nav class="navbar navbar-expand-xl bg-primary navbar-dark p-3 ">
@@ -49,11 +56,7 @@ export default (Header) => {
 
                 <Dropdown.Menu>
                   <Dropdown.Item href="#/action-1">My Profile</Dropdown.Item>
-                  <Dropdown.Item onClick={ (e)=>{
-                        localStorage.removeItem("userInfo");
-                      
-                  }
-                  }><NavLink to="/">Logout</NavLink></Dropdown.Item>
+                  <Dropdown.Item onClick={logoutHandler}>Logout</Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
             </ul>

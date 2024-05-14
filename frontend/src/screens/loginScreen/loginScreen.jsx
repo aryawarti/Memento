@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect,useState } from "react";
 import MainScreen from "../../component/mainScreen";
 import { NavLink } from "react-router-dom";
 import "./loginScreen.css";
-import axios from "axios";
 import Loading from "../../component/Loading";
 import ErrorMessage from "../../component/ErrorMessage";
 import { useSelector, useDispatch } from "react-redux";
@@ -11,8 +10,8 @@ import { FormSubmit } from "../../actions/formSubmit";
 function LoginScreen() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const { error, loading, userInfo } = useSelector((state) => state.userLogin);
+
   const dispatch = useDispatch();
 
   const submitHandler = async (e) => {
@@ -20,9 +19,11 @@ function LoginScreen() {
 
     dispatch(FormSubmit({ email, password }));
   };
+  
 
   return (
-    <div
+    <>
+     <div
       className="loginPage"
       style={{
         backgroundImage: `url('/images/loginWala.jpg')`,
@@ -78,6 +79,7 @@ function LoginScreen() {
               Login
             </button>
           </form>
+
           <div class="row">
             <div class="col" style={{ color: "black", fontSize: "15px" }}>
               New Customer ?{" "}
@@ -89,9 +91,12 @@ function LoginScreen() {
               </NavLink>
             </div>
           </div>
+
         </div>
       </MainScreen>
     </div>
+    </>
+  
   );
 }
 
